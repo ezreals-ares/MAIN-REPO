@@ -11,5 +11,6 @@ public class Jobsheet1 {
         System.out.println("Alamat  : Ds. Buntaran, Kec. Rejotangan, Kab. Tulungagung");
         System.out.println("No HP   : 085854644715");
         System.out.println("Hobi    : Membaca");
+        System.out.println("Kendaraan   : Motor");
     }
 }
