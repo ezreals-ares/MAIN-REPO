@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class PemilihanBilangan21 {
 
     public static void main(String[] args) {
@@ -11,10 +10,8 @@ public class PemilihanBilangan21 {
         angka = sc.nextInt();
 
         hasil = (angka %2 == 0) ? "Genap" : "Ganjil";
-
         System.out.println("Angka " + angka + " Adalah Bilangan " + hasil);
 
-        
         sc.close();
         
     }
