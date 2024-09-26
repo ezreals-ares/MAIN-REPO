@@ -37,6 +37,7 @@ public class Siakad21 {
         System.out.println("\nNilai Akhir : " + nilaiAkir);
         
         sc.close();
+        
 
     }
 }
