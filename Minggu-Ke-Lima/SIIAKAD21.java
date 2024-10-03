@@ -58,10 +58,10 @@ public class SIIAKAD21 {
         } else if (nilaiAkir <= 39) {
             System.out.println("Nilai Akhir huruf : E");
             System.out.println("Kualifikasi : Gagal");
-        } else if (nilaiAkir > 100 && nilaiAkir < 0) {
+        } else if (nilaiAkir > 100 || nilaiAkir < 0) {
             System.out.println("Error Data yang anda masukkan salah");
         } else {
-            System.out.println("Erro Data yang anda masukkan salah");
+            System.out.println("Error Data yang anda masukkan salah");
         }
         sc.close();
     }

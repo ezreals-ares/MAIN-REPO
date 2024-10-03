@@ -2,35 +2,39 @@ import java.util.Scanner;
 public class MyFirstJavaGithub21 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Masukkan jumlah elemen array: ");
-        int jumlah = scanner.nextInt();
+        Scanner sc = new Scanner( System.in);
+
+        String merk;
+        String kategori;
+        byte ukuran;
+        double harga = 0;
         
-        int[] angka = new int[jumlah];
-        
-        System.out.println("Masukkan elemen-elemen array:");
-        for (int i = 0; i < jumlah; i++) {
-            System.out.print("Elemen ke-" + (i+1) + ": ");
-            angka[i] = scanner.nextInt();
-        }
-        
-        System.out.println("\nHasil penentuan genap dan ganjil:");
-        for (int i = 0; i < jumlah; i++) {
-            if (angka[i] % 2 == 0) {
-                System.out.println(angka[i] + " adalah bilangan genap");
-            } else {
-                System.out.println(angka[i] + " adalah bilangan ganjil");
+        System.out.print("Masukan Merk: ");
+        merk  = sc.nextLine();
+        System.out.print("Masukan kategori: ");
+        kategori = sc.nextLine();
+        System.out.print("Masukan ukuran: ");
+        ukuran = sc.nextByte();
+
+        if (merk.equalsIgnoreCase("Specs")) {
+            if (kategori.equalsIgnoreCase("Slip On")) {
+                if (ukuran == 36) {
+                    harga = 800000;
+                } else if (ukuran == 37) {
+                    harga =  800000;
+                } else if (ukuran == 38) {
+                    harga =  800000;
+                } else if (ukuran == 39) {
+                    harga =  800000;
+                } else if (ukuran == 40) {
+                    harga =  800000;
+                } else {
+                    System.out.println("Produk Tidak Tersedia" + harga);
+                }
+                sc.close();
             }
+    
         }
-        
-        scanner.close();
-
-
-
-
-
 
     }
 }
-
-
