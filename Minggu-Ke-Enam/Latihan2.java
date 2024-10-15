@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Latihan2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         double diskon = 0;
         String jenisBuku;
         int jumlah;
@@ -28,7 +29,7 @@ public class Latihan2 {
                 diskon = 0.9;
             }
         } else if ((jenisBuku != "kamus") && (jenisBuku != "novel")) {
-            if (jumlah < 3 && jumlah > 0)  {
+            if (jumlah > 3 && jumlah > 0)  {
                 diskon = 0.5;
             } else if (jumlah < 3){
                 diskon = 0;
