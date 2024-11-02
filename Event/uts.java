@@ -1,3 +1,4 @@
+package Event;
 import java.util.Scanner;
 
 public class uts {
