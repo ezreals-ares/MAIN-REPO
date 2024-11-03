@@ -15,12 +15,7 @@ public class Lingkaran21 {
         System.out.println("luas lingkarann adalah : " + luas);
 
         input.close();
-
-    
         
-        
-
-
     } 
     
 }
