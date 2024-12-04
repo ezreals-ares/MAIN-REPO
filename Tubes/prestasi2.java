@@ -10,7 +10,7 @@ public class prestasi2 {
     
 
     static void tampilkanMenu() {
-        System.out.println("\n== PENCATATAN PRESTASI MAHASISWA ==\n");
+        System.out.println("\n== PENCATATAN PRESTASI MAHASISWA ==");
         System.out.println("1. Tambah Data Prestasi");
         System.out.println("2. Tampilkan Semua Prestasi");
         System.out.println("3. Analisis Prestasi Berdasarkan Jenis");
@@ -21,27 +21,27 @@ public class prestasi2 {
 
     static void tambahDataPrestasi() {
 
-        String[] atribut = {"Nama Mahasiswa: ", "NIM Mahasiswa: ", "Jenis Prestasi: ", "Tingkat Prestasi (Lokal/Nasional/Internasional): " };
-        String[] inputData = new String[4];
+        String nama, nim, jenis, tingkat;
         int tahun;
-        int i;
         
         if (jumlahPrestasi >= Max_prestasi) {
             System.out.println("Data prestasi penuh!");
             return;
 
         } else { 
-           for (i = 0; i < 3; i++) {
-                System.out.print("Masukkan " + atribut[i] + ": ");
-                inputData[i] = sc.nextLine();
-           }
+           System.out.print("Masukkan Nama Mahasiswa: ");
+           nama = sc.nextLine();
+           System.out.print("Masukkan NIM Mahasiswa: ");
+           nim = sc.nextLine();
+           System.out.print("Masukkan Jenis Prestasi: ");
+           jenis = sc.nextLine();
         }
 
         while (true) {
-            System.out.print("Masukkan " + atribut[3] + ": ");
-            inputData[3] = sc.nextLine();
+            System.out.print("Masukkan Tingkat Prestasi (Lokal/Nasional/Internasional): ");
+            tingkat = sc.nextLine();
 
-            if (inputData[3].equalsIgnoreCase("Lokal") || inputData[3].equalsIgnoreCase("Nasional") || inputData[3].equalsIgnoreCase("Internasional")) {
+            if (tingkat.equalsIgnoreCase("Lokal") || tingkat.equalsIgnoreCase("Nasional") || tingkat.equalsIgnoreCase("Internasional")) {
                 break;
             } else {
                 System.out.println("Tingkat prestasi tidak valid. Coba lagi.");
@@ -60,14 +60,14 @@ public class prestasi2 {
             }
         }
 
-       for (i = 0; i < 4; i++) {
-            dataPrestasi[jumlahPrestasi][i] = inputData[i];
-       }
+        dataPrestasi[jumlahPrestasi][0] = nama;
+        dataPrestasi[jumlahPrestasi][1] = nim;
+        dataPrestasi[jumlahPrestasi][2] = jenis;
+        dataPrestasi[jumlahPrestasi][3] = tingkat;
         tahunPrestasi[jumlahPrestasi] = tahun;
 
         jumlahPrestasi++;
         System.out.println("Data prestasi berhasil ditambahkan.");
-        return;
      
     }
 
@@ -78,7 +78,7 @@ public class prestasi2 {
             return;
 
         } else {
-            System.out.println("\n== DAFTAR SEMUA PRESTASI == \n");
+            System.out.println("\n== DAFTAR SEMUA PRESTASI ==");
             for (i = 0; i < jumlahPrestasi; i++) {
                 for (j = 0; j < 4; j++) {
                     switch (j) {
@@ -118,7 +118,7 @@ public class prestasi2 {
             System.out.print("Masukkan Jenis Prestasi yang ingin dianalisis: ");
            jenisAnalisis = sc.nextLine();   
 
-            System.out.println("\n== ANALISIS PRESTASI ==\n");
+            System.out.println("\n== ANALISIS PRESTASI ==");
             for (int i = 0; i < jumlahPrestasi; i++) {
                 if (dataPrestasi[i][2].equalsIgnoreCase(jenisAnalisis)) {
                     System.out.println("Nama: " + dataPrestasi[i][0] + " | " 
