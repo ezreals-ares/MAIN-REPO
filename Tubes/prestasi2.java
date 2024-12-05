@@ -5,8 +5,8 @@ public class prestasi2 {
     static int Max_prestasi = 1000;
     static String[][] dataPrestasi = new String[Max_prestasi][4]; 
     static int[] tahunPrestasi = new int[Max_prestasi];
-    static int jumlahPrestasi = 0;
-    static  Scanner sc = new Scanner(System.in);
+    static int data_Mhs = 0;
+    static Scanner sc = new Scanner(System.in);
     
 
     static void tampilkanMenu() {
@@ -24,7 +24,7 @@ public class prestasi2 {
         String nama, nim, jenis, tingkat;
         int tahun;
         
-        if (jumlahPrestasi >= Max_prestasi) {
+        if (data_Mhs >= Max_prestasi) {
             System.out.println("Data prestasi penuh!");
             return;
 
@@ -60,26 +60,25 @@ public class prestasi2 {
             }
         }
 
-        dataPrestasi[jumlahPrestasi][0] = nama;
-        dataPrestasi[jumlahPrestasi][1] = nim;
-        dataPrestasi[jumlahPrestasi][2] = jenis;
-        dataPrestasi[jumlahPrestasi][3] = tingkat;
-        tahunPrestasi[jumlahPrestasi] = tahun;
+        dataPrestasi[data_Mhs][0] = nama;
+        dataPrestasi[data_Mhs][1] = nim;
+        dataPrestasi[data_Mhs][2] = jenis;
+        dataPrestasi[data_Mhs][3] = tingkat;
+        tahunPrestasi[data_Mhs] = tahun;
 
-        jumlahPrestasi++;
+        data_Mhs++;
         System.out.println("Data prestasi berhasil ditambahkan.");
-     
     }
 
     static void tampilkanSemuaPrestasi() {
         int i,j;
-        if (jumlahPrestasi == 0) {
+        if (data_Mhs == 0) {
             System.out.println("Belum ada data prestasi.");
             return;
 
         } else {
             System.out.println("\n== DAFTAR SEMUA PRESTASI ==");
-            for (i = 0; i < jumlahPrestasi; i++) {
+            for (i = 0; i < data_Mhs; i++) {
                 for (j = 0; j < 4; j++) {
                     switch (j) {
                         case 0:
@@ -110,16 +109,16 @@ public class prestasi2 {
         String jenisAnalisis;
         boolean ditemukan = false;
 
-        if (jumlahPrestasi == 0) {
+        if (data_Mhs == 0) {
             System.out.println("Belum ada data prestasi.");
             return;
 
         } else {
             System.out.print("Masukkan Jenis Prestasi yang ingin dianalisis: ");
-           jenisAnalisis = sc.nextLine();   
+            jenisAnalisis = sc.nextLine();   
 
             System.out.println("\n== ANALISIS PRESTASI ==");
-            for (int i = 0; i < jumlahPrestasi; i++) {
+            for (int i = 0; i < data_Mhs; i++) {
                 if (dataPrestasi[i][2].equalsIgnoreCase(jenisAnalisis)) {
                     System.out.println("Nama: " + dataPrestasi[i][0] + " | " 
                                         + "NIM: " + dataPrestasi[i][1] + " | "
