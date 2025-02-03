@@ -1,7 +1,6 @@
-package Tubes;
 import java.util.Scanner;
 
-public class Matriks {
+public class Matriks1 {
 
     static int baris, kolom;
     static int i, j, k;
@@ -12,7 +11,7 @@ public class Matriks {
         System.out.println("|========= OPERASI MATRIKS =========|");
         System.out.println("|===================================|");
         System.out.println("| 1. Operasi (+) dan (-)            |");
-        System.out.println("| 2. Operasi Kali (x) antar Matriks |");    
+        System.out.println("| 2. Operasi Kali (x) antar Matriks |");
         System.out.println("| 3. Menentukan Invers Matriks      |");
         System.out.println("| 4. Menentukan Transpose Matriks   |");
         System.out.println("| 5. keluar                         |");
@@ -214,11 +213,10 @@ public class Matriks {
             }
 
             matriksAwal_Ts = new double[baris][kolom];
-            transpose = new double[kolom][baris];
             System.out.println("\nMasukkan Elemen Matriks: ");
             inputElemenMatriks(matriksAwal_Ts, baris, kolom);
 
-            transpose = hitunglTranspose(matriksAwal_Ts, baris, kolom);
+            transpose = hitungTranspose(matriksAwal_Ts);
 
             System.out.println("\nMatriks Asli: \n");
             tampilMatriks(matriksAwal_Ts, baris, kolom);
@@ -228,20 +226,20 @@ public class Matriks {
 
             valid = true;
 
-        }while(!valid); 
+        }while(!valid);
+
+        
     }
 
-    static double[][] hitunglTranspose (double[][] matriks, int baris, int kolom) {
-        double[][] hasilTranspose = new double[baris][kolom];
+    static double[][] hitungTranspose(double[][] matriks) {
+        double[][] hasilTranspose = new double[kolom][baris];
         for (i = 0; i < baris; i++) {
             for (j = 0; j < kolom; j++) {
-                hasilTranspose[j][i] = matriks[i][j];    
+                hasilTranspose[j][i] = matriks[i][j];
             }
         }
         return hasilTranspose;
     }
-
-
 
     static void inversMatriks() {
         int pilihanivers;
@@ -281,8 +279,7 @@ public class Matriks {
             matriksAwal_inv = new double[baris][kolom];
             inputElemenMatriks(matriksAwal_inv, baris, kolom);
 
-            double determinant = matriksAwal_inv[0][0] * matriksAwal_inv[1][1] 
-                               - matriksAwal_inv[0][1] * matriksAwal_inv[1][0];
+            double determinant = matriksAwal_inv[0][0] * matriksAwal_inv[1][1] - matriksAwal_inv[0][1] * matriksAwal_inv[1][0];
 
             if (determinant != 0) {
                 double[][] inverse = new double[2][2];
@@ -316,57 +313,44 @@ public class Matriks {
         double determinant;
         int baris = 3;
         int kolom = 3;
-        boolean valid = false;
-        do {
-            System.out.println("\nMasukkan elemen-elemen matriks 3x3:");
-            inputElemenMatriks(matriks_inv3, baris, kolom);
-
-            determinant = (matriks_inv3[0][0] * matriks_inv3[1][1] * matriks_inv3[2][2]) 
-                        + (matriks_inv3[0][1] * matriks_inv3[1][2] * matriks_inv3[2][0]) 
-                        + (matriks_inv3[0][2] * matriks_inv3[1][0] * matriks_inv3[2][1])
-                        - (matriks_inv3[0][2] * matriks_inv3[1][1] * matriks_inv3[2][0]) 
-                        - (matriks_inv3[0][0] * matriks_inv3[1][2] * matriks_inv3[2][1]) 
-                        - (matriks_inv3[0][1] * matriks_inv3[1][0] * matriks_inv3[2][2]);
-
-            if (determinant == 0) {
-                System.out.println("Matriks tidak memiliki invers, coba lagi!");
-                continue;
-            }
+    
+        System.out.println("\nMasukkan elemen-elemen matriks 3x3:");
+        inputElemenMatriks(matriks_inv3, baris, kolom);
+    
+        determinant = matriks_inv3[0][0] * (matriks_inv3[1][1] * matriks_inv3[2][2] - matriks_inv3[1][2] * matriks_inv3[2][1])
+                     - matriks_inv3[0][1] * (matriks_inv3[1][0] * matriks_inv3[2][2] - matriks_inv3[1][2] * matriks_inv3[2][0])
+                     + matriks_inv3[0][2] * (matriks_inv3[1][0] * matriks_inv3[2][1] - matriks_inv3[1][1] * matriks_inv3[2][0]);
         
-            kofaktor[0][0] =   matriks_inv3[1][1] * matriks_inv3[2][2] - matriks_inv3 [1][2] * matriks_inv3 [2][1];
-            kofaktor[0][1] = -(matriks_inv3[1][0] * matriks_inv3[2][2] - matriks_inv3[1][2] * matriks_inv3[2][0]);
-            kofaktor[0][2] =   matriks_inv3[1][0] * matriks_inv3[2][1] - matriks_inv3[1][1] * matriks_inv3[2][0];
-            kofaktor[1][0] = -(matriks_inv3[0][1] * matriks_inv3[2][2] - matriks_inv3[0][2] * matriks_inv3[2][1]);
-            kofaktor[1][1] =   matriks_inv3[0][0] * matriks_inv3[2][2] - matriks_inv3[0][2] * matriks_inv3[2][0];
-            kofaktor[1][2] = -(matriks_inv3[0][0] * matriks_inv3[2][1] - matriks_inv3[0][1] * matriks_inv3[2][0]);
-            kofaktor[2][0] =   matriks_inv3[0][1] * matriks_inv3[1][2] - matriks_inv3[0][2] * matriks_inv3[1][1];
-            kofaktor[2][1] = -(matriks_inv3[0][0] * matriks_inv3[1][2] - matriks_inv3[0][2] * matriks_inv3[1][0]);
-            kofaktor[2][2] =   matriks_inv3[0][0] * matriks_inv3[1][1] - matriks_inv3[0][1] * matriks_inv3[1][0];
-
-
-            for (i = 0; i < 3; i++) {
-                for (j = 0; j < 3; j++) {
-                    adjoint[i][j] = kofaktor[j][i];
-                    adjoint[i][j] /= determinant; 
-                    invers[i][j] = adjoint[i][j];
-                }
+        if (determinant == 0) {
+            System.out.println("Matriks tidak memiliki invers (determinannya 0).");
+            return;
+        }
+    
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                kofaktor[i][j] = ((matriks_inv3[(i+1)%3][(j+1)%3] * matriks_inv3[(i+2)%3][(j+2)%3]) 
+                                  - (matriks_inv3[(i+1)%3][(j+2)%3] * matriks_inv3[(i+2)%3][(j+1)%3]));
             }
+        }
+    
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                adjoint[i][j] = kofaktor[j][i];
+                adjoint[i][j] /= determinant;
+                invers[i][j] = adjoint[i][j];
+            }
+        }
 
-            System.out.println("\nTampil Matriks Asli\n");
-            tampilMatriks(matriks_inv3, baris, kolom);
-            System.out.println("\nMatriks Invers adalah:");
-            tampilMatriks(invers, baris, kolom);
-
-            valid = true;
-
-        }while(!valid);
-        
+        System.out.println("\nTampil Matriks Asli\n");
+        tampilMatriks(matriks_inv3, baris, kolom);
+        System.out.println("\nMatriks Invers adalah:");
+        tampilMatriks(invers, baris, kolom);
     }
     
 
     static void tampilMatriks(double[][] matriks, int baris, int kolom) {
         for (i = 0; i < baris; i++) {
-            System.out.print("| \t\t");
+            System.out.printf("| \t\t");
             for (j = 0; j < kolom; j++) {
                 System.out.printf("%.1f \t", matriks[i][j]);
             }
@@ -389,6 +373,7 @@ public class Matriks {
             tampilMenu();
             System.out.print("Masukkan Pilihan: ");
             pilihan = sc.nextInt();
+
             switch (pilihan) {
                 case 1:
                     operasiTambahKurang();

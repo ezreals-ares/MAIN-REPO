@@ -2,9 +2,8 @@ package Tubes;
 import java.util.Scanner;
 
 public class prestasi2 {
-    static int Max_prestasi = 1000;
-    static String[][] dataPrestasi = new String[Max_prestasi][4]; 
-    static int[] tahunPrestasi = new int[Max_prestasi];
+    static int max_Prestasi = 1000;
+    static String[][] dataPrestasi = new String[max_Prestasi][5]; 
     static int data_Mhs = 0;
     static Scanner sc = new Scanner(System.in);
     
@@ -13,10 +12,9 @@ public class prestasi2 {
         System.out.println("\n== PENCATATAN PRESTASI MAHASISWA ==");
         System.out.println("1. Tambah Data Prestasi");
         System.out.println("2. Tampilkan Semua Prestasi");
-        System.out.println("3. Analisis Prestasi Berdasarkan Jenis");
+        System.out.println("3. Analisis Prestasi");
         System.out.println("4. Keluar");
        
-        
     }
 
     static void tambahDataPrestasi() {
@@ -24,7 +22,7 @@ public class prestasi2 {
         String nama, nim, jenis, tingkat;
         int tahun;
         
-        if (data_Mhs >= Max_prestasi) {
+        if (data_Mhs >= max_Prestasi) {
             System.out.println("Data prestasi penuh!");
             return;
 
@@ -59,12 +57,13 @@ public class prestasi2 {
                 System.out.println("Tahun tidak valid. Coba lagi.");
             }
         }
-
+        
+        
         dataPrestasi[data_Mhs][0] = nama;
         dataPrestasi[data_Mhs][1] = nim;
         dataPrestasi[data_Mhs][2] = jenis;
         dataPrestasi[data_Mhs][3] = tingkat;
-        tahunPrestasi[data_Mhs] = tahun;
+        dataPrestasi[data_Mhs][4] = String.valueOf(tahun);
 
         data_Mhs++;
         System.out.println("Data prestasi berhasil ditambahkan.");
@@ -79,7 +78,7 @@ public class prestasi2 {
         } else {
             System.out.println("\n== DAFTAR SEMUA PRESTASI ==");
             for (i = 0; i < data_Mhs; i++) {
-                for (j = 0; j < 4; j++) {
+                for (j = 0; j < 5; j++) {
                     switch (j) {
                         case 0:
                             System.out.print("Nama: " + dataPrestasi[i][j] + " | ");
@@ -93,47 +92,66 @@ public class prestasi2 {
                         case 3:
                             System.out.print("Tingkat: " + dataPrestasi[i][j] + " | ");
                             break;
+                        case 4:
+                            System.out.println("Tahun: " + dataPrestasi[i][j] + " | ");
                     }
                     
                 }         
-                System.out.println("Tahun: " + tahunPrestasi[i]);
                 
             }
             
         }
 
-       
     }
 
     static void analisisPrestasi() {
-        String jenisAnalisis;
+        String analisis_Jenis;
+        String analisis_Tahun;
         boolean ditemukan = false;
-
+       
+    
         if (data_Mhs == 0) {
             System.out.println("Belum ada data prestasi.");
             return;
+        }
+    
+        System.out.print("Masukkan Jenis Prestasi yang ingin dianalisis: ");
+        analisis_Jenis = sc.nextLine();
+        System.out.print("Masukkan Tahun Prestasi yang ingin dianalisis: ");
+        analisis_Tahun = sc.nextLine();
 
-        } else {
-            System.out.print("Masukkan Jenis Prestasi yang ingin dianalisis: ");
-            jenisAnalisis = sc.nextLine();   
+        System.out.println("\n== ANALISIS PRESTASI BERDASARKAN JENIS & TAHUN ==");
+        for (int i = 0; i < data_Mhs; i++) {
+            if (dataPrestasi[i][2].equalsIgnoreCase(analisis_Jenis) && dataPrestasi[i][4].equals(analisis_Tahun)) {
+                for (int j = 0; j < 5; j++) {
+                    switch (j) {
+                        case 0:
+                            System.out.print("Nama: " + dataPrestasi[i][j] + " | ");
+                            break;
+                        case 1:
+                            System.out.print("NIM: " + dataPrestasi[i][j] + " | ");
+                            break;
+                        case 2:
+                            System.out.print("Jenis: " + dataPrestasi[i][j] + " | ");
+                            break;
+                        case 3:
+                            System.out.print("Tingkat: " + dataPrestasi[i][j] + " | ");
+                            break;
+                        case 4:
+                            System.out.println("Tahun: " + dataPrestasi[i][j]);   
+                            break;
+                    }
 
-            System.out.println("\n== ANALISIS PRESTASI ==");
-            for (int i = 0; i < data_Mhs; i++) {
-                if (dataPrestasi[i][2].equalsIgnoreCase(jenisAnalisis)) {
-                    System.out.println("Nama: " + dataPrestasi[i][0] + " | " 
-                                        + "NIM: " + dataPrestasi[i][1] + " | "
-                                        + "Tingkat: " + dataPrestasi[i][3] + " | " 
-                                        +  "Tahun: " + tahunPrestasi[i]);              
-                    ditemukan = true;
-            }
-
-            if (!ditemukan) {
-                System.out.println("Tidak ada data prestasi dengan jenis tersebut.");
+                }
+                ditemukan = true;
             }
         }
+
+        if (!ditemukan) {
+            System.out.println("Tidak ada data prestasi dengan Jenis dan Tahun tersebut.");
+        }
+    
     }
-}
-        
     
 
     public static void main(String[] args) {
